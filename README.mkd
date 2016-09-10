@@ -1,0 +1,45 @@
+# PuTTY Colorizer
+
+This app allows the user to create PuTTY color schemes and generate Widows
+registry snippets that will configure an arbitrary number of existing profiles
+to use it.
+
+## PuTTY colors
+
+The PuTTY colors are internally named "ColourN" where N starts with 0 and ends
+with 21. The following is the mapping between these numbers and the the color
+names in the user interface:
+
+* 0: Default Foreground
+* 1: Default Bold Foreground
+* 2: Default Background
+* 3: Default Bold Background
+* 4: Cursor Text
+* 5: Cursor Color
+* 6: ANSI Black
+* 7: ANSI Black Bold
+* 8: ANSI Red
+* 9: ANSI Red Bold
+* 10: ANSI Green
+* 11: ANSI Green Bold
+* 12: ANSI Yellow
+* 13: ANSI Yellow Bold
+* 14: ANSI Blue
+* 15: ANSI Blue Bold
+* 16: ANSI Magenta
+* 17: ANSI Magenta Bold
+* 18: ANSI Cyan
+* 19: ANSI Cyan Bold
+* 20: ANSI White
+* 21: ANSI White Bold
+
+The color values themselves are stored as 3 integers representing the R, G, and
+B values. For example: '0,0,0' for black, '0,0,255' for blue, and so on.
+
+## The Interface
+
+The user interface is divided into three portions:
+
+* The color pickers for different colors
+* Color scheme preview
+* Registry output

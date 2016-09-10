@@ -1,0 +1,55 @@
+<style>
+.cursor {
+    background-color: {{ colors[5].value }};
+    color: {{ colors[4].value }};
+}
+</style>
+
+<nav class="selector">
+    <a v-if="activeView === 'preview'" v-on:click="showRegistry" href="javascript:void(0)">Registry File</a>
+    <a v-if="activeView === 'registry'" v-on:click="showPreview" href="javascript:void(0)">Preview</a>
+</nav>
+
+<div class="color-scheme">
+    <p class="color" v-for="color in colors">
+    <label for="{{ color.id }}">{{ color.name }}:</label>
+    <input id="{{ color.id }}" v-model="color.value" placeholder="color" type="color">
+    <span class="swatch" :style="{ background: color.value }" data-target="#{{ color.id }}"></span>
+    </p>
+</div>
+
+<div class="show-{{ activeView }}">
+    <div class="preview" :style="{ background: colors[2].value, color: colors[0].value }">
+        <p>PuTTY Colorizer v{{ version }}</p>
+        <p>&copy;2016 Hajime Yamasaki Vukelic.</p>
+        <p>Some rights reserved.</p>
+        <br>
+        <p class="color-bars" v-for="fg in ansiColors">
+        <span class="color-cell" :style="{ color: fg.value }">gYw</span>
+        <span class="color-cell" v-for="bg in ansiColors" :style="{ background: bg.value, color: fg.value }">
+            gYw
+        </span>
+        </p>
+        <br>
+        <p class="final-prompt">
+        [user@universe ~] exi<span id="cursor" class="cursor">t</span>
+        </p>
+    </div>
+
+    <div class="output">
+        <h2>Presets</h2>
+        <p class="presets">
+            <input v-model="presets" placeholder="comma-separated list of presets">
+        </p>
+        <p class="instructions">
+        A comma-separated list of saved session names can be supplied. Registry
+        entries will be generated for all listed sessions.
+        </p>
+
+        <h2>Output</h2>
+        <textarea class="reg-text">{{ registryText }}</textarea>
+        <p class="instructions">
+        Copy this text into a file, save it as 'putty.reg', and double-click to 
+        install.
+        </p>
+    </div>

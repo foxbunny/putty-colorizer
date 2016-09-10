@@ -1,0 +1,135 @@
+@import "compass/reset";
+@import "compass/css3";
+
+* {
+  @include box-sizing(border-box);
+}
+
+body {
+  background: #eee;
+  color: #555;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 140%;
+}
+
+h1 {
+  font-size: 120%;
+  color: #777;
+  padding: 1rem;
+  padding-left: 4rem;
+}
+
+.color-scheme {
+  position: fixed;
+  top: 0;
+  left: -9.4rem;
+  width: 12rem;
+  height: 100vh;
+  overflow-y: scroll;
+  margin-right: 1rem;
+  background: #555;
+  color: #eee;
+  @include box-shadow(0 0 5px transparentize(black, 0.5));
+  @include transition(translateX, 0.3s);
+
+  &:hover {
+    @include translateX(9.4rem);
+  }
+}
+
+.color {
+  padding: 0.2rem 0.2rem 0 0;
+  white-space: nowrap;
+  text-align: right;
+
+  label {
+    font-size: 80%;
+    font-weight: bold;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .swatch {
+    display: inline-block;
+    width: 1.2rem;
+    height: 1.2rem;
+    padding: 0;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+}
+
+.preview,
+.output {
+  padding: 1rem;
+  padding-left: 4rem;
+}
+
+.preview {
+  font-family: monospace;
+  font-size: 120%;
+  line-height: 110%;
+  height: 100vh;
+
+  .cursor {
+    display: inline-block;
+  }
+}
+
+.output {
+  h2 {
+    font-size: 150%;
+    line-height: 110%;
+    margin: 2rem 0 1rem;
+  }
+
+  .instructions {
+    color: #777;
+    font-size: 90%;
+    margin: 0.3rem 0 1rem;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.3rem 0.5rem;
+    font-family: monospace;
+    border: 1px solid #ddd;
+    background: #fff;
+  }
+
+  .reg-text {
+    height: 10rem;
+  }
+}
+
+.selector {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+
+  a {
+    display: inline-block;
+    border: 1px solid #ddd;
+    background: #555;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.4rem 1rem;
+    @include border-radius(5rem);
+  }
+}
+
+.show-preview .output {
+  display: none;
+}
+
+.show-registry .preview {
+  display: none;
+}

@@ -1,0 +1,5 @@
+*.sw[op]
+/node_modules
+/bin
+.sass-cache
+/static
