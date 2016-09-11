@@ -26,7 +26,7 @@ $(function() {
 
   colors = ColorData.fromArray(
     localStorage.get('colors') || DEFAULT_COLORS);
-  presets = localStorage.get('presets') || 'Default';
+  presets = localStorage.get('presets') || 'Default Settings';
   vm = new Vue({
     el: '#main',
     template: ui,
