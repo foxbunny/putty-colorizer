@@ -39,9 +39,10 @@ h1 {
 }
 
 .color {
-  padding: 0.2rem 0.2rem 0 0;
+  padding: 0.2rem 0.2rem 0.2rem 0;
   white-space: nowrap;
   text-align: right;
+  line-height: 1.2rem;
 
   // Following two lines are used to tuck the invisible input away
   position: relative;
@@ -72,6 +73,7 @@ h1 {
     padding: 0;
     vertical-align: middle;
     cursor: pointer;
+    @include border-radius(0.6rem);
     @include transition(background-color 0.3s);
   }
 }
