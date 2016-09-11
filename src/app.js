@@ -8,7 +8,7 @@ import Vue from 'vue';
 import ColorData, { DEFAULT_COLORS } from './color-data';
 import ui from './templates/ui.html';
 
-const VERSION = '0.0.2';
+const VERSION = '1.0.0-dev';
 const CURSOR_BLINK_INTERVAL = 500;
 
 
