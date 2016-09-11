@@ -37,6 +37,5 @@
     "webpack-dev-server": "^1.15.1"
   },
   "main": "src/app.js",
-  "private": true,
   "license": "MIT"
 }
