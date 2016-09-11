@@ -75,7 +75,7 @@ class ColorData {
   }
 
   get registryValue() {
-    return `(${ this.red },${ this.green },${ this.blue })`;
+    return `${ this.red },${ this.green },${ this.blue }`;
   }
 
   get id() {

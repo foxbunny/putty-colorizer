@@ -60,8 +60,13 @@ $(function() {
         var regText = 'Windows Registry Editor Version 5.00\n\n';
         var that = this;
         return regText + this.presetsArray.map(function(preset) {
+          var regSection;
+
           if (preset === '') return null;
-          var regSection = `[HKEY_CURRENT_USER\\Software\\SimonTatham\\PuTTY\\Sessions\\${preset}]\n`;
+
+          // In the line below, note that we are not exactly doing URL quoting.
+          // We only want to encode the space character.
+          regSection = `[HKEY_CURRENT_USER\\Software\\SimonTatham\\PuTTY\\Sessions\\${ preset.replace(/ /g, '%20') }]\n`;
           return regSection + that.colors.map(function(color, index) {
             return `"Colour${index}"="${ color.registryValue }"`;
           }).join('\n');
