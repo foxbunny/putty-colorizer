@@ -15,7 +15,6 @@ $(function() {
   // span.swatch is an alias for the color input element
   $('body').on('click', '.swatch', function(e) {
     var el = $(this);
-    console.log(el.data('target'));
     var target = $(el.data('target'));
     target.click();
   });
