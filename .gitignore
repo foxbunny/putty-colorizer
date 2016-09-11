@@ -1,0 +1,10 @@
+*.sw[op]
+/node_modules
+/src
+/compasss-src
+/README.mkd
+/webpack.config.js
+/config.rb
+/.jshintrc
+/package.json
+.sass-cache
