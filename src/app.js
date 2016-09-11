@@ -80,6 +80,12 @@ $(function() {
         return this.colors.map(function (c) {
           return c.value;
         });
+      },
+      previewShown: function () {
+        return this.activeView == 'preview';
+      },
+      registryShown: function () {
+        return this.activeView == 'registry';
       }
     },
 

@@ -160,11 +160,3 @@ h1 {
     @include border-radius(5rem);
   }
 }
-
-.show-preview .output {
-  display: none;
-}
-
-.show-registry .preview {
-  display: none;
-}

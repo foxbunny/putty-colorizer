@@ -240,13 +240,3 @@ h1 {
   -webkit-border-radius: 5rem;
   border-radius: 5rem;
 }
-
-/* line 164, ../compass-src/sass/screen.scss */
-.show-preview .output {
-  display: none;
-}
-
-/* line 168, ../compass-src/sass/screen.scss */
-.show-registry .preview {
-  display: none;
-}

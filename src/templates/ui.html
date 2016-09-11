@@ -9,8 +9,8 @@
 </style>
 
 <nav class="selector">
-    <a v-if="activeView === 'preview'" v-on:click="showRegistry" href="javascript:void(0)">Registry File</a>
-    <a v-if="activeView === 'registry'" v-on:click="showPreview" href="javascript:void(0)">Preview</a>
+    <a v-if="previewShown" v-on:click="showRegistry" href="javascript:void(0)">Registry File</a>
+    <a v-if="registryShown" v-on:click="showPreview" href="javascript:void(0)">Preview</a>
 </nav>
 
 <div class="color-scheme">
@@ -21,50 +21,48 @@
     </p>
 </div>
 
-<div class="show-{{ activeView }}">
-    <div class="preview" :style="{ background: colors[2].value, color: colors[0].value }">
-        <p>
-            [user@universe ~] color-demo
-        </p>
-        <br>
-        <p class="bold">PuTTY Colorizer v{{ version }}</p>
-        <p>&copy;2016 Hajime Yamasaki Vukelic.</p>
-        <p>Some rights reserved.</p>
-        <br>
-        <p class="color-bars" v-for="fg in ansiColors">
-            <span class="color-cell" :style="{ color: fg.value }">gYw</span>
-            <span class="color-cell" v-for="bg in ansiColors" :style="{ background: bg.value, color: fg.value }">
-                gYw
-            </span>
-        </p>
-        <br>
-        <p>[user@universe ~] whereis source</p>
-        <p><a href="https://github.com/foxbunny/putty-colorizer">https://github.com/foxbunny/putty-colorizer</a></p>
-        <p>[user@universe ~] echo $LICENSE</p>
-        <p>MIT</p>
-        <p class="final-prompt">
-            [user@universe ~] exi<span id="cursor" class="cursor">t</span>
-        </p>
-    </div>
+<div v-if="previewShown" class="preview" :style="{ background: colors[2].value, color: colors[0].value }">
+    <p>
+        [user@universe ~] color-demo
+    </p>
+    <br>
+    <p class="bold">PuTTY Colorizer v{{ version }}</p>
+    <p>&copy;2016 Hajime Yamasaki Vukelic.</p>
+    <p>Some rights reserved.</p>
+    <br>
+    <p class="color-bars" v-for="fg in ansiColors">
+        <span class="color-cell" :style="{ color: fg.value }">gYw</span>
+        <span class="color-cell" v-for="bg in ansiColors" :style="{ background: bg.value, color: fg.value }">
+            gYw
+        </span>
+    </p>
+    <br>
+    <p>[user@universe ~] whereis source</p>
+    <p><a href="https://github.com/foxbunny/putty-colorizer">https://github.com/foxbunny/putty-colorizer</a></p>
+    <p>[user@universe ~] echo $LICENSE</p>
+    <p>MIT</p>
+    <p class="final-prompt">
+        [user@universe ~] exi<span id="cursor" class="cursor">t</span>
+    </p>
+</div>
 
-    <div class="output">
-        <h2>Your saved PuTTY sessions</h2>
-        <p class="presets">
-            <input v-model="presets" placeholder="comma-separated list of presets">
-        </p>
-        <p class="instructions">
-            A comma-separated list of saved session names can be supplied.
-            Registry entries will be generated for all listed sessions.
-        </p>
+<div v-if="registryShown" class="output">
+    <h2>Your saved PuTTY sessions</h2>
+    <p class="presets">
+        <input v-model="presets" placeholder="comma-separated list of presets">
+    </p>
+    <p class="instructions">
+        A comma-separated list of saved session names can be supplied.
+        Registry entries will be generated for all listed sessions.
+    </p>
 
-        <h2>Output</h2>
-        <textarea class="reg-text">{{ registryText }}</textarea>
-        <p class="instructions">
-            Copy this text into a file, save it as 'putty.reg', and
-            double-click to install, or use the button below.
-        </p>
-        <p class="download">
-            <a href="{{ registryHref }}" download="putty.reg">Download putty.reg</a>
-        </p>
-    </div>
+    <h2>Output</h2>
+    <textarea class="reg-text">{{ registryText }}</textarea>
+    <p class="instructions">
+        Copy this text into a file, save it as 'putty.reg', and
+        double-click to install, or use the button below.
+    </p>
+    <p class="download">
+        <a href="{{ registryHref }}" download="putty.reg">Download putty.reg</a>
+    </p>
 </div>
