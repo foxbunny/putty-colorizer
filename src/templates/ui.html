@@ -3,6 +3,9 @@
     background-color: {{ colors[5].value }};
     color: {{ colors[4].value }};
 }
+.bold {
+    color: {{ colors[1].value }};
+}
 </style>
 
 <nav class="selector">
@@ -24,7 +27,7 @@
             [user@universe ~] color-demo
         </p>
         <br>
-        <p>PuTTY Colorizer v{{ version }}</p>
+        <p class="bold">PuTTY Colorizer v{{ version }}</p>
         <p>&copy;2016 Hajime Yamasaki Vukelic.</p>
         <p>Some rights reserved.</p>
         <br>
@@ -35,14 +38,10 @@
             </span>
         </p>
         <br>
-        <p>
-            [user@universe ~] whereis source<br>
-            <a href="https://github.com/foxbunny/putty-colorizer">https://github.com/foxbunny/putty-colorizer</a>
-        </p>
-        <p>
-            [user@universe ~] echo $LICENSE<br>
-            MIT
-        </p>
+        <p>[user@universe ~] whereis source</p>
+        <p><a href="https://github.com/foxbunny/putty-colorizer">https://github.com/foxbunny/putty-colorizer</a></p>
+        <p>[user@universe ~] echo $LICENSE</p>
+        <p>MIT</p>
         <p class="final-prompt">
             [user@universe ~] exi<span id="cursor" class="cursor">t</span>
         </p>
