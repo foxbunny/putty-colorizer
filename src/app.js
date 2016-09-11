@@ -51,16 +51,25 @@ $(function() {
       ansiColors: function() {
         return this.colors.slice(6);
       },
-      registryText: function () {
-        var regText = `Windows Registry Editor Version 5.00
-
-[HKEY_CURRENT_USER\\Software\\SimonTatham\\PuTTY\\Sessions\\Default]
-`;
-        this.colors.forEach(function(color, index) {
-          regText += `"Colour${index}"="${ color.registryValue }"\n`;
+      presetsArray: function () {
+        return this.presets.split(',').map(function(preset) {
+          return preset.trim();
         });
-
-        return regText;
+      },
+      registryText: function () {
+        var regText = 'Windows Registry Editor Version 5.00\n\n';
+        var that = this;
+        return regText + this.presetsArray.map(function(preset) {
+          if (preset === '') return null;
+          var regSection = `[HKEY_CURRENT_USER\\Software\\SimonTatham\\PuTTY\\Sessions\\${preset}]\n`;
+          return regSection + that.colors.map(function(color, index) {
+            return `"Colour${index}"="${ color.registryValue }"`;
+          }).join('\n');
+        }).join('\n\n');
+      },
+      registryHref: function () {
+        return 'data:text/plain;charset=utf-8,' +
+          encodeURIComponent(this.registryText);
       },
       colorArray: function () {
         return this.colors.map(function (c) {

@@ -197,14 +197,29 @@ h1 {
 .output .reg-text {
   height: 10rem;
 }
+/* line 125, ../compass-src/sass/screen.scss */
+.output .download {
+  margin-top: 2rem;
+}
+/* line 128, ../compass-src/sass/screen.scss */
+.output .download a {
+  font-size: 150%;
+  padding: 0.5em 1em;
+  -moz-border-radius: 5rem;
+  -webkit-border-radius: 5rem;
+  border-radius: 5rem;
+  background: #339;
+  color: #fff;
+  text-decoration: none;
+}
 
-/* line 126, ../compass-src/sass/screen.scss */
+/* line 139, ../compass-src/sass/screen.scss */
 .selector {
   position: fixed;
   top: 1rem;
   right: 1rem;
 }
-/* line 131, ../compass-src/sass/screen.scss */
+/* line 144, ../compass-src/sass/screen.scss */
 .selector a {
   display: inline-block;
   border: 1px solid #ddd;
@@ -217,12 +232,12 @@ h1 {
   border-radius: 5rem;
 }
 
-/* line 142, ../compass-src/sass/screen.scss */
+/* line 155, ../compass-src/sass/screen.scss */
 .show-preview .output {
   display: none;
 }
 
-/* line 146, ../compass-src/sass/screen.scss */
+/* line 159, ../compass-src/sass/screen.scss */
 .show-registry .preview {
   display: none;
 }

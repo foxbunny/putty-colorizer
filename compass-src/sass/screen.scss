@@ -121,6 +121,19 @@ h1 {
   .reg-text {
     height: 10rem;
   }
+
+  .download {
+    margin-top: 2rem;
+
+    a {
+      font-size: 150%;
+      padding: 0.5em 1em;
+      @include border-radius(5rem);
+      background: #339;
+      color: #fff;
+      text-decoration: none;
+    }
+  }
 }
 
 .selector {

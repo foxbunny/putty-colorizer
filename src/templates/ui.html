@@ -25,14 +25,14 @@
         <p>Some rights reserved.</p>
         <br>
         <p class="color-bars" v-for="fg in ansiColors">
-        <span class="color-cell" :style="{ color: fg.value }">gYw</span>
-        <span class="color-cell" v-for="bg in ansiColors" :style="{ background: bg.value, color: fg.value }">
-            gYw
-        </span>
+            <span class="color-cell" :style="{ color: fg.value }">gYw</span>
+            <span class="color-cell" v-for="bg in ansiColors" :style="{ background: bg.value, color: fg.value }">
+                gYw
+            </span>
         </p>
         <br>
         <p class="final-prompt">
-        [user@universe ~] exi<span id="cursor" class="cursor">t</span>
+            [user@universe ~] exi<span id="cursor" class="cursor">t</span>
         </p>
     </div>
 
@@ -42,14 +42,17 @@
             <input v-model="presets" placeholder="comma-separated list of presets">
         </p>
         <p class="instructions">
-        A comma-separated list of saved session names can be supplied. Registry
-        entries will be generated for all listed sessions.
+            A comma-separated list of saved session names can be supplied.
+            Registry entries will be generated for all listed sessions.
         </p>
 
         <h2>Output</h2>
         <textarea class="reg-text">{{ registryText }}</textarea>
         <p class="instructions">
-        Copy this text into a file, save it as 'putty.reg', and double-click to 
-        install.
+            Copy this text into a file, save it as 'putty.reg', and
+            double-click to install, or use the button below.
+        </p>
+        <p class="download">
+            <a href="{{ registryHref }}" download="putty.reg">Download putty.reg</a>
         </p>
     </div>
