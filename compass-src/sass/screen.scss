@@ -72,6 +72,7 @@ h1 {
     padding: 0;
     vertical-align: middle;
     cursor: pointer;
+    @include transition(background-color 0.3s);
   }
 }
 
@@ -86,9 +87,14 @@ h1 {
   font-size: 120%;
   line-height: 110%;
   height: 100vh;
+  @include transition(background-color 0.3s, color 0.3s);
 
   .color-bars {
     white-space: nowrap;
+  }
+
+  .color-cell {
+    @include transition(background-color 0.3s, color 0.3s);
   }
 
   .cursor {
