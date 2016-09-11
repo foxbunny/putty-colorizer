@@ -1,12 +1,15 @@
 import 'babel-polyfill';
-import ui from './templates/ui.html';
+import './screen.css';
+
+import $ from 'jquery';
+
 import Vue from 'vue';
 import ColorData from './color-data';
-import $ from 'jquery';
-import './screen.css';
+import ui from './templates/ui.html';
 
 const VERSION = '0.0.1';
 const CURSOR_BLINK_INTERVAL = 500;
+
 
 $(function() {
   // span.swatch is an alias for the color input element
@@ -20,12 +23,16 @@ $(function() {
   var vm = new Vue({
     el: '#main',
     template: ui,
+
+    // Hooks
     ready: function () {
       var cursor = $('#cursor');
       setInterval(function () {
         cursor.toggleClass('cursor');
       }, CURSOR_BLINK_INTERVAL);
     },
+
+    // Data
     data: {
       version: VERSION,
       colors: [
@@ -55,6 +62,7 @@ $(function() {
       presets: 'Default',
       activeView: 'preview'
     },
+
     computed: {
       ansiColors: function() {
         return this.colors.slice(6);
@@ -71,6 +79,8 @@ $(function() {
         return regText;
       }
     },
+
+    // Behavior
     methods: {
       showPreview: function () {
         this.activeView = 'preview';
