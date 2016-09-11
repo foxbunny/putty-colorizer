@@ -2,9 +2,10 @@ import 'babel-polyfill';
 import './screen.css';
 
 import $ from 'jquery';
+import localStorage from 'local-storage';
 
 import Vue from 'vue';
-import ColorData from './color-data';
+import ColorData, { DEFAULT_COLORS } from './color-data';
 import ui from './templates/ui.html';
 
 const VERSION = '0.0.1';
@@ -12,6 +13,10 @@ const CURSOR_BLINK_INTERVAL = 500;
 
 
 $(function() {
+  var colors;
+  var presets;
+  var vm;
+
   // span.swatch is an alias for the color input element
   $('body').on('click', '.swatch', function(e) {
     var el = $(this);
@@ -19,7 +24,10 @@ $(function() {
     target.click();
   });
 
-  var vm = new Vue({
+  colors = ColorData.fromArray(
+    localStorage.get('colors') || DEFAULT_COLORS);
+  presets = localStorage.get('presets') || 'Default';
+  vm = new Vue({
     el: '#main',
     template: ui,
 
@@ -34,31 +42,8 @@ $(function() {
     // Data
     data: {
       version: VERSION,
-      colors: [
-        new ColorData('Default Foreground', 131, 148, 150),
-        new ColorData('Default Bold Foreground', 147, 161, 161),
-        new ColorData('Default Background', 0, 43, 54),
-        new ColorData('Default Bold Background', 7, 54, 66),
-        new ColorData('Cursor Text', 0, 43, 54),
-        new ColorData('Cursor Color', 238, 232, 213),
-        new ColorData('ANSI Black', 7, 54, 66),
-        new ColorData('ANSI Black Bold', 0, 43, 56),
-        new ColorData('ANSI Red', 220, 50, 47),
-        new ColorData('ANSI Red Bold', 203, 75, 22),
-        new ColorData('ANSI Green', 133, 153, 0),
-        new ColorData('ANSI Green Bold', 88, 110, 117),
-        new ColorData('ANSI Yellow', 181, 137, 0),
-        new ColorData('ANSI Yellow Bold', 101, 123, 131),
-        new ColorData('ANSI Blue', 38, 139, 210),
-        new ColorData('ANSI Blue Bold', 131, 148, 150),
-        new ColorData('ANSI Magenta', 211, 54, 130),
-        new ColorData('ANSI Magenta Bold', 108, 113, 196),
-        new ColorData('ANSI Cyan', 42, 161, 152),
-        new ColorData('ANSI Cyan Bold', 147, 161, 161),
-        new ColorData('ANSI White', 238, 232, 213),
-        new ColorData('ANSI White Bold', 253, 246, 227)
-      ],
-      presets: 'Default',
+      colors: colors,
+      presets: presets,
       activeView: 'preview'
     },
 
@@ -76,6 +61,11 @@ $(function() {
         });
 
         return regText;
+      },
+      colorArray: function () {
+        return this.colors.map(function (c) {
+          return c.value;
+        });
       }
     },
 
@@ -86,6 +76,15 @@ $(function() {
       },
       showRegistry: function () {
         this.activeView = 'registry';
+      }
+    },
+
+    watch: {
+      'colorArray': function (colors) {
+        localStorage('colors', colors);
+      },
+      'presets': function (presets) {
+        localStorage('presets', presets);
       }
     }
   });
