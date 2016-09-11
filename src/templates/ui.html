@@ -13,8 +13,8 @@
 <div class="color-scheme">
     <p class="color" v-for="color in colors">
     <label for="{{ color.id }}">{{ color.name }}:</label>
-    <input id="{{ color.id }}" v-model="color.value" placeholder="color" type="color">
     <span class="swatch" :style="{ background: color.value }" data-target="#{{ color.id }}"></span>
+    <input id="{{ color.id }}" v-model="color.value" placeholder="color" type="color">
     </p>
 </div>
 

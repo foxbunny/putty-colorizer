@@ -23,8 +23,8 @@ h1 {
 .color-scheme {
   position: fixed;
   top: 0;
-  left: -9.4rem;
-  width: 12rem;
+  left: -11.4rem;
+  width: 14rem;
   height: 100vh;
   overflow-y: scroll;
   margin-right: 1rem;
@@ -34,7 +34,7 @@ h1 {
   @include transition(translateX, 0.3s);
 
   &:hover {
-    @include translateX(9.4rem);
+    @include translateX(11.4rem);
   }
 }
 
@@ -43,14 +43,23 @@ h1 {
   white-space: nowrap;
   text-align: right;
 
+  // Following two lines are used to tuck the invisible input away
+  position: relative;
+  overflow: hidden;
+
   label {
     font-size: 80%;
     font-weight: bold;
+    width: 10rem;
     display: inline-block;
     vertical-align: middle;
   }
 
+  // Invisible input
   input {
+    position: absolute;
+    top: 0;
+    left: 0;
     opacity: 0;
     width: 0;
     height: 0;
