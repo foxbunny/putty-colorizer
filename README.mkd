@@ -4,6 +4,13 @@ This app allows the user to create PuTTY color schemes and generate Widows
 registry snippets that will configure an arbitrary number of existing profiles
 to use it.
 
+## DISCLAIMER
+
+THE OUTPUT OF THIS PROGRAM IS USED WITH THE WINDOWS REGISTRY. AS SUCH, IT MAY
+RENDER YOUR PUTTY CONFIGURATION UNUSABLE, OR EVEN BREAK YOUR ENTIRE OPERATING
+SYSTEM. YOU WILL USE THIS PROGRAM'S OUTPUT AT YOUR OWN RISK. AUTHOR DOES NOT
+GIVE ANY WARRANTIES.
+
 ## PuTTY colors
 
 The PuTTY colors are internally named "ColourN" where N starts with 0 and ends
@@ -43,3 +50,19 @@ The user interface is divided into three portions:
 * The color pickers for different colors
 * Color scheme preview
 * Registry output
+
+All UI components are live: when the color pickers are used to select different
+colors, the preview and registry output automatically refresh.
+
+## Hacking
+
+To hack at PuTTY Colorizer, you need to have NodeJS and Compass installed.
+Clone the repository and::
+
+    $ npm install
+    $ compass watch
+    $ npm start
+
+## License
+
+This code is licensed under MIT license. See the `LICENSE` file.
