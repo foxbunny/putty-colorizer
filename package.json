@@ -19,6 +19,7 @@
     "jquery": "^3.1.0",
     "jshint": "^2.9.3",
     "jshint-loader": "^0.8.3",
+    "local-storage": "^1.4.2",
     "mustache": "^2.2.1",
     "rgba-convert": "^0.3.0",
     "style-loader": "^0.13.1",
