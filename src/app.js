@@ -1,51 +1,20 @@
-import 'babel-polyfill';
-import './screen.css';
-
 import $ from 'jquery';
-import localStorage from 'local-storage';
-
 import Vue from 'vue';
-import ColorData, { DEFAULT_COLORS } from './color-data';
 import ui from './templates/ui.html';
 
 const VERSION = '1.0.0-dev';
-const CURSOR_BLINK_INTERVAL = 500;
 
-
-$(function() {
-  var colors;
-  var presets;
-  var vm;
-
-  // span.swatch is an alias for the color input element
-  $('body').on('click', '.swatch', function(e) {
-    var el = $(this);
-    var target = $(el.data('target'));
-    target.click();
-  });
-
-  colors = ColorData.fromArray(
-    localStorage.get('colors') || DEFAULT_COLORS);
-  presets = localStorage.get('presets') || 'Default Settings';
-  vm = new Vue({
-    el: '#main',
+var App = Vue.extend({
     template: ui,
 
     // Hooks
-    ready: function () {
-      var cursor = $('#cursor');
-      setInterval(function () {
-        cursor.toggleClass('cursor');
-      }, CURSOR_BLINK_INTERVAL);
+
+    created: function () {
+      this.version = VERSION;
+      this.activeView = 'preview';
     },
 
     // Data
-    data: {
-      version: VERSION,
-      colors: colors,
-      presets: presets,
-      activeView: 'preview'
-    },
 
     computed: {
       ansiColors: function() {
@@ -90,6 +59,7 @@ $(function() {
     },
 
     // Behavior
+
     methods: {
       showPreview: function () {
         this.activeView = 'preview';
@@ -98,14 +68,6 @@ $(function() {
         this.activeView = 'registry';
       }
     },
-
-    watch: {
-      'colorArray': function (colors) {
-        localStorage('colors', colors);
-      },
-      'presets': function (presets) {
-        localStorage('presets', presets);
-      }
-    }
-  });
 });
+
+export default App;
