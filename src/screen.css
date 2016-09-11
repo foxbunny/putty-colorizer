@@ -152,7 +152,7 @@ h1 {
 
 /* line 75, ../compass-src/sass/screen.scss */
 .preview {
-  font-family: monospace;
+  font-family: 'Consolas', 'Lucida Console', monospace;
   font-size: 120%;
   line-height: 110%;
   height: 100vh;
