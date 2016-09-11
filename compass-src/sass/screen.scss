@@ -78,6 +78,10 @@ h1 {
   line-height: 110%;
   height: 100vh;
 
+  .color-bars {
+    white-space: nowrap;
+  }
+
   .cursor {
     display: inline-block;
   }

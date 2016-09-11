@@ -158,23 +158,27 @@ h1 {
   height: 100vh;
 }
 /* line 81, ../compass-src/sass/screen.scss */
+.preview .color-bars {
+  white-space: nowrap;
+}
+/* line 85, ../compass-src/sass/screen.scss */
 .preview .cursor {
   display: inline-block;
 }
 
-/* line 87, ../compass-src/sass/screen.scss */
+/* line 91, ../compass-src/sass/screen.scss */
 .output h2 {
   font-size: 150%;
   line-height: 110%;
   margin: 2rem 0 1rem;
 }
-/* line 93, ../compass-src/sass/screen.scss */
+/* line 97, ../compass-src/sass/screen.scss */
 .output .instructions {
   color: #777;
   font-size: 90%;
   margin: 0.3rem 0 1rem;
 }
-/* line 99, ../compass-src/sass/screen.scss */
+/* line 103, ../compass-src/sass/screen.scss */
 .output input,
 .output textarea {
   width: 100%;
@@ -183,18 +187,18 @@ h1 {
   border: 1px solid #ddd;
   background: #fff;
 }
-/* line 108, ../compass-src/sass/screen.scss */
+/* line 112, ../compass-src/sass/screen.scss */
 .output .reg-text {
   height: 10rem;
 }
 
-/* line 113, ../compass-src/sass/screen.scss */
+/* line 117, ../compass-src/sass/screen.scss */
 .selector {
   position: fixed;
   top: 1rem;
   right: 1rem;
 }
-/* line 118, ../compass-src/sass/screen.scss */
+/* line 122, ../compass-src/sass/screen.scss */
 .selector a {
   display: inline-block;
   border: 1px solid #ddd;
@@ -207,12 +211,12 @@ h1 {
   border-radius: 5rem;
 }
 
-/* line 129, ../compass-src/sass/screen.scss */
+/* line 133, ../compass-src/sass/screen.scss */
 .show-preview .output {
   display: none;
 }
 
-/* line 133, ../compass-src/sass/screen.scss */
+/* line 137, ../compass-src/sass/screen.scss */
 .show-registry .preview {
   display: none;
 }
