@@ -1,0 +1,22 @@
+@import "compass/css3";
+
+* {
+  @include box-sizing(border-box);
+}
+
+body {
+  background: #eee;
+  color: #555;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 140%;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-size: 120%;
+  color: #777;
+  padding: 1rem;
+  padding-left: 4rem;
+}
+

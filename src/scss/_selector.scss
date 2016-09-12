@@ -1,0 +1,18 @@
+@import "compass/css3";
+
+.selector {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+
+  a {
+    display: inline-block;
+    border: 1px solid #ddd;
+    background: #555;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.4rem 1rem;
+    @include border-radius(5rem);
+  }
+}
