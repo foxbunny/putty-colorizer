@@ -50,22 +50,16 @@ var App = Vue.extend({
           return c.value;
         });
       },
-      previewShown: function () {
-        return this.activeView === 'preview';
-      },
-      registryShown: function () {
-        return this.activeView === 'registry';
-      }
     },
 
     // Behavior
 
     methods: {
-      showPreview: function () {
-        this.activeView = 'preview';
-      },
       showRegistry: function () {
-        this.activeView = 'registry';
+        this.registryActive = true;
+      },
+      hideRegistry: function () {
+        this.registryActive = false;
       }
     },
 });

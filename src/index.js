@@ -33,7 +33,7 @@ $(function() {
     data: {
       colors: colors,
       presets: presets,
-      activeView: 'preview'
+      registryActive: false
     },
 
     ready: function () {

@@ -9,8 +9,8 @@
 </style>
 
 <nav class="selector">
-    <a v-if="previewShown" v-on:click="showRegistry" href="javascript:void(0)">Registry File</a>
-    <a v-if="registryShown" v-on:click="showPreview" href="javascript:void(0)">Close</a>
+    <a v-if="registryActive" v-on:click="hideRegistry" href="javascript:void(0)">Close</a>
+    <a v-else v-on:click="showRegistry" href="javascript:void(0)">Registry File</a>
 </nav>
 
 <div class="color-scheme">
@@ -46,7 +46,7 @@
     </p>
 </section>
 
-<section v-show="registryShown" class="output" transition="slide">
+<section v-show="registryActive" class="output" transition="slide">
     <h2>Your saved PuTTY sessions</h2>
     <p class="presets">
         <input v-model="presets" placeholder="comma-separated list of presets">
