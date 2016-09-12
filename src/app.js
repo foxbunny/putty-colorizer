@@ -2,7 +2,7 @@ import $ from 'jquery';
 import Vue from 'vue';
 import ui from './templates/ui.html';
 
-const VERSION = '0.0.3';
+const VERSION = '1.0.0-dev';
 
 var App = Vue.extend({
     template: ui,
