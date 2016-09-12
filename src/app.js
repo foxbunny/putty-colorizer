@@ -17,14 +17,17 @@ var App = Vue.extend({
     // Data
 
     computed: {
+
       ansiColors: function() {
         return this.colors.slice(6);
       },
+
       presetsArray: function () {
         return this.presets.split(',').map(function(preset) {
           return preset.trim();
         });
       },
+
       registryText: function () {
         var regText = 'Windows Registry Editor Version 5.00\n\n';
         var that = this;
@@ -41,15 +44,18 @@ var App = Vue.extend({
           }).join('\n');
         }).join('\n\n');
       },
+
       registryHref: function () {
         return 'data:text/plain;charset=utf-8,' +
           encodeURIComponent(this.registryText);
       },
+
       colorArray: function () {
         return this.colors.map(function (c) {
           return c.value;
         });
       },
+
     },
 
     // Behavior
