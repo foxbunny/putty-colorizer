@@ -36,7 +36,6 @@ var App = Vue.extend({
           return c.value;
         });
       },
-
     },
 
     // Behavior
@@ -45,6 +44,7 @@ var App = Vue.extend({
       showRegistry: function () {
         this.registryActive = true;
       },
+
       hideRegistry: function () {
         this.registryActive = false;
       }
@@ -58,10 +58,11 @@ var App = Vue.extend({
     },
 
     watch: {
-      'colorArray': function (colors) {
+      colorArray: function (colors) {
         localStorage('colors', colors);
       },
-      'presets': function (presets) {
+
+      presets: function (presets) {
         localStorage('presets', presets);
       }
     }
