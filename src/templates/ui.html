@@ -10,7 +10,7 @@
 
 <nav class="selector">
     <a v-if="previewShown" v-on:click="showRegistry" href="javascript:void(0)">Registry File</a>
-    <a v-if="registryShown" v-on:click="showPreview" href="javascript:void(0)">Preview</a>
+    <a v-if="registryShown" v-on:click="showPreview" href="javascript:void(0)">Close</a>
 </nav>
 
 <div class="color-scheme">
@@ -21,7 +21,7 @@
     </p>
 </div>
 
-<div v-if="previewShown" class="preview" :style="{ background: colors[2].value, color: colors[0].value }">
+<section class="preview" :style="{ background: colors[2].value, color: colors[0].value }">
     <p>
         [user@universe ~] color-demo
     </p>
@@ -44,9 +44,9 @@
     <p class="final-prompt">
         [user@universe ~] exi<span id="cursor" class="cursor">t</span>
     </p>
-</div>
+</section>
 
-<div v-if="registryShown" class="output">
+<section v-show="registryShown" class="output" transition="slide">
     <h2>Your saved PuTTY sessions</h2>
     <p class="presets">
         <input v-model="presets" placeholder="comma-separated list of presets">
@@ -65,4 +65,4 @@
     <p class="download">
         <a href="{{ registryHref }}" download="putty.reg">Download putty.reg</a>
     </p>
-</div>
+</section>

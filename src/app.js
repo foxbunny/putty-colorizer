@@ -10,8 +10,8 @@ var App = Vue.extend({
     // Hooks
 
     created: function () {
+      // Values bound here are not reactive at all.
       this.version = VERSION;
-      this.activeView = 'preview';
     },
 
     // Data
@@ -51,10 +51,10 @@ var App = Vue.extend({
         });
       },
       previewShown: function () {
-        return this.activeView == 'preview';
+        return this.activeView === 'preview';
       },
       registryShown: function () {
-        return this.activeView == 'registry';
+        return this.activeView === 'registry';
       }
     },
 

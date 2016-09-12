@@ -1,0 +1,14 @@
+@import "compass/css3";
+
+.slide-transition {
+  @include translateX(0);
+  @include transition(transform 0.5s);
+}
+
+.slide-enter {
+  @include translateX(100vw);
+}
+
+.slide-leave {
+  @include translateX(100vw);
+}

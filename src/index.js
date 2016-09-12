@@ -33,6 +33,7 @@ $(function() {
     data: {
       colors: colors,
       presets: presets,
+      activeView: 'preview'
     },
 
     ready: function () {
