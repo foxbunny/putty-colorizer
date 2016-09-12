@@ -1,6 +1,6 @@
 {
   "name": "putty-colrizer",
-  "version": "1.0.0-dev",
+  "version": "1.0.0",
   "description": "Web app for creating PuTTY color schemes",
   "author": "Hajime Yamasaki Vukelic <hayavuk@gmail.com>",
   "scripts": {
