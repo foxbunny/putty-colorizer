@@ -50,7 +50,7 @@
     </p>
 </section>
 
-<section v-show="registryActive" class="output" transition="slide">
+<section v-show="registryActive" class="output" transition="slide" v-on:keyup.27="hideRegistry">
     <h2>Your saved PuTTY sessions</h2>
     <p class="presets">
         <input v-model="presets" placeholder="comma-separated list of presets">
