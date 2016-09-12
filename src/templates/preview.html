@@ -1,0 +1,38 @@
+<style>
+.cursor {
+    background-color: {{ colors[5].value }};
+    color: {{ colors[4].value }};
+}
+.bold {
+    color: {{ colors[1].value }};
+}
+</style>
+
+<section class="preview" :style="{ background: background.value, color: foreground.value }">
+    <p>
+        [user@universe ~] color-demo
+    </p>
+    <br>
+    <p class="bold">PuTTY Colorizer v{{ version }}</p>
+    <p>&copy;2016 Hajime Yamasaki Vukelic.</p>
+    <p>Some rights reserved.</p>
+    <br>
+    <p class="color-bars" v-for="fg in ansiColors">
+        <span class="color-cell" :style="{ color: fg.value }">gYw</span>
+        <span class="color-cell" v-for="bg in ansiColors" :style="{ background: bg.value, color: fg.value }">
+            gYw
+        </span>
+    </p>
+    <br>
+    <p>[user@universe ~] whereis source</p>
+    <p>
+        <a href="https://github.com/foxbunny/putty-colorizer" target="_blank">
+            https://github.com/foxbunny/putty-colorizer
+        </a>
+    </p>
+    <p>[user@universe ~] echo $LICENSE</p>
+    <p>MIT</p>
+    <p class="final-prompt">
+        [user@universe ~] exi<span id="cursor" class="cursor">t</span>
+    </p>
+</section>

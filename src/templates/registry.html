@@ -1,0 +1,20 @@
+<section class="output">
+    <h2>Your saved PuTTY sessions</h2>
+    <p class="presets">
+        <input v-model="presets" placeholder="comma-separated list of presets">
+    </p>
+    <p class="instructions">
+        A comma-separated list of saved session names can be supplied.
+        Registry entries will be generated for all listed sessions.
+    </p>
+
+    <h2>Output</h2>
+    <textarea class="reg-text">{{ registryText }}</textarea>
+    <p class="instructions">
+        Copy this text into a file, save it as 'putty.reg', and
+        double-click to install, or use the button below.
+    </p>
+    <p class="download">
+        <a href="{{ registryHref }}" download="putty.reg">Download putty.reg</a>
+    </p>
+</section>

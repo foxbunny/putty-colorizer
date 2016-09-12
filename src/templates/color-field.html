@@ -1,0 +1,5 @@
+<p class="color">
+    <label for="{{ color.id }}">{{ color.name }}:</label>
+    <span class="swatch" :style="{ background: color.value }" v-on:click="activate"></span>
+    <input id="{{ color.id }}" v-model="color.value" placeholder="color" type="color">
+</p>
