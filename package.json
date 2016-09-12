@@ -4,8 +4,8 @@
   "description": "Web app for creating PuTTY color schemes",
   "author": "Hajime Yamasaki Vukelic <hayavuk@gmail.com>",
   "scripts": {
-    "build": "webpack --conf webpack.config.js",
-    "start": "webpack-dev-server --inline --hot --conf webpack.config.js",
+    "build": "webpack --progress --config webpack.production.js",
+    "start": "webpack-dev-server --inline --hot --open",
     "test": "karma start"
   },
   "devDependencies": {
