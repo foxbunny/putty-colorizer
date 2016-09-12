@@ -2,7 +2,7 @@
 
 .slide-transition {
   @include translateX(0);
-  @include transition(transform 0.5s);
+  @include transition(transform 0.3s);
 }
 
 .slide-enter {
