@@ -58,21 +58,16 @@
 
 	var _localStorage2 = _interopRequireDefault(_localStorage);
 
-	var _vue = __webpack_require__(306);
+	var _app = __webpack_require__(306);
 
-	var _vue2 = _interopRequireDefault(_vue);
+	var _app2 = _interopRequireDefault(_app);
 
-	var _colorData = __webpack_require__(307);
+	var _colorData = __webpack_require__(309);
 
 	var _colorData2 = _interopRequireDefault(_colorData);
 
-	var _ui = __webpack_require__(309);
-
-	var _ui2 = _interopRequireDefault(_ui);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var VERSION = '0.0.2';
 	var CURSOR_BLINK_INTERVAL = 500;
 
 	(0, _jquery2.default)(function () {
@@ -89,69 +84,21 @@
 
 	  colors = _colorData2.default.fromArray(_localStorage2.default.get('colors') || _colorData.DEFAULT_COLORS);
 	  presets = _localStorage2.default.get('presets') || 'Default Settings';
-	  vm = new _vue2.default({
+
+	  vm = new _app2.default({
 	    el: '#main',
-	    template: _ui2.default,
 
-	    // Hooks
-	    ready: function ready() {
-	      var cursor = (0, _jquery2.default)('#cursor');
-	      setInterval(function () {
-	        cursor.toggleClass('cursor');
-	      }, CURSOR_BLINK_INTERVAL);
-	    },
-
-	    // Data
 	    data: {
-	      version: VERSION,
 	      colors: colors,
 	      presets: presets,
 	      activeView: 'preview'
 	    },
 
-	    computed: {
-	      ansiColors: function ansiColors() {
-	        return this.colors.slice(6);
-	      },
-	      presetsArray: function presetsArray() {
-	        return this.presets.split(',').map(function (preset) {
-	          return preset.trim();
-	        });
-	      },
-	      registryText: function registryText() {
-	        var regText = 'Windows Registry Editor Version 5.00\n\n';
-	        var that = this;
-	        return regText + this.presetsArray.map(function (preset) {
-	          var regSection;
-
-	          if (preset === '') return null;
-
-	          // In the line below, note that we are not exactly doing URL quoting.
-	          // We only want to encode the space character.
-	          regSection = '[HKEY_CURRENT_USER\\Software\\SimonTatham\\PuTTY\\Sessions\\' + preset.replace(/ /g, '%20') + ']\n';
-	          return regSection + that.colors.map(function (color, index) {
-	            return '"Colour' + index + '"="' + color.registryValue + '"';
-	          }).join('\n');
-	        }).join('\n\n');
-	      },
-	      registryHref: function registryHref() {
-	        return 'data:text/plain;charset=utf-8,' + encodeURIComponent(this.registryText);
-	      },
-	      colorArray: function colorArray() {
-	        return this.colors.map(function (c) {
-	          return c.value;
-	        });
-	      }
-	    },
-
-	    // Behavior
-	    methods: {
-	      showPreview: function showPreview() {
-	        this.activeView = 'preview';
-	      },
-	      showRegistry: function showRegistry() {
-	        this.activeView = 'registry';
-	      }
+	    ready: function ready() {
+	      var cursor = (0, _jquery2.default)('#cursor');
+	      setInterval(function () {
+	        cursor.toggleClass('cursor');
+	      }, CURSOR_BLINK_INTERVAL);
 	    },
 
 	    watch: {
@@ -8329,7 +8276,7 @@
 
 
 	// module
-	exports.push([module.id, "/* line 5, ../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font: inherit;\n  font-size: 100%;\n  vertical-align: baseline;\n}\n\n/* line 22, ../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */\nhtml {\n  line-height: 1;\n}\n\n/* line 24, ../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */\nol, ul {\n  list-style: none;\n}\n\n/* line 26, ../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n\n/* line 28, ../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */\ncaption, th, td {\n  text-align: left;\n  font-weight: normal;\n  vertical-align: middle;\n}\n\n/* line 30, ../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */\nq, blockquote {\n  quotes: none;\n}\n/* line 103, ../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */\nq:before, q:after, blockquote:before, blockquote:after {\n  content: \"\";\n  content: none;\n}\n\n/* line 32, ../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */\na img {\n  border: none;\n}\n\n/* line 116, ../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */\narticle, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {\n  display: block;\n}\n\n/* line 4, ../compass-src/sass/screen.scss */\n* {\n  -moz-box-sizing: border-box;\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box;\n}\n\n/* line 8, ../compass-src/sass/screen.scss */\nbody {\n  background: #eee;\n  color: #555;\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  line-height: 140%;\n}\n\n/* line 16, ../compass-src/sass/screen.scss */\nh1 {\n  font-size: 120%;\n  color: #777;\n  padding: 1rem;\n  padding-left: 4rem;\n}\n\n/* line 23, ../compass-src/sass/screen.scss */\n.color-scheme {\n  position: fixed;\n  top: 0;\n  left: -11.4rem;\n  width: 14rem;\n  height: 100vh;\n  overflow-y: scroll;\n  margin-right: 1rem;\n  background: #555;\n  color: #eee;\n  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);\n  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);\n  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);\n  -moz-transition: translateX, 0.3s;\n  -o-transition: translateX, 0.3s;\n  -webkit-transition: translateX, 0.3s;\n  transition: translateX, 0.3s;\n}\n/* line 36, ../compass-src/sass/screen.scss */\n.color-scheme:hover {\n  -moz-transform: translateX(11.4rem);\n  -ms-transform: translateX(11.4rem);\n  -webkit-transform: translateX(11.4rem);\n  transform: translateX(11.4rem);\n}\n\n/* line 41, ../compass-src/sass/screen.scss */\n.color {\n  padding: 0.2rem 0.2rem 0 0;\n  white-space: nowrap;\n  text-align: right;\n  position: relative;\n  overflow: hidden;\n}\n/* line 50, ../compass-src/sass/screen.scss */\n.color label {\n  font-size: 80%;\n  font-weight: bold;\n  width: 10rem;\n  display: inline-block;\n  vertical-align: middle;\n}\n/* line 59, ../compass-src/sass/screen.scss */\n.color input {\n  position: absolute;\n  top: 0;\n  left: 0;\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n/* line 68, ../compass-src/sass/screen.scss */\n.color .swatch {\n  display: inline-block;\n  width: 1.2rem;\n  height: 1.2rem;\n  padding: 0;\n  vertical-align: middle;\n  cursor: pointer;\n}\n\n/* line 78, ../compass-src/sass/screen.scss */\n.preview,\n.output {\n  padding: 1rem;\n  padding-left: 4rem;\n}\n\n/* line 84, ../compass-src/sass/screen.scss */\n.preview {\n  font-family: 'Consolas', 'Lucida Console', monospace;\n  font-size: 120%;\n  line-height: 110%;\n  height: 100vh;\n}\n/* line 90, ../compass-src/sass/screen.scss */\n.preview .color-bars {\n  white-space: nowrap;\n}\n/* line 94, ../compass-src/sass/screen.scss */\n.preview .cursor {\n  display: inline-block;\n}\n/* line 98, ../compass-src/sass/screen.scss */\n.preview a {\n  color: inherit;\n  text-decoration: none;\n}\n/* line 102, ../compass-src/sass/screen.scss */\n.preview a:hover {\n  text-decoration: underline;\n}\n\n/* line 109, ../compass-src/sass/screen.scss */\n.output h2 {\n  font-size: 150%;\n  line-height: 110%;\n  margin: 2rem 0 1rem;\n}\n/* line 115, ../compass-src/sass/screen.scss */\n.output .instructions {\n  color: #777;\n  font-size: 90%;\n  margin: 0.3rem 0 1rem;\n}\n/* line 121, ../compass-src/sass/screen.scss */\n.output input,\n.output textarea {\n  width: 100%;\n  padding: 0.3rem 0.5rem;\n  font-family: monospace;\n  border: 1px solid #ddd;\n  background: #fff;\n}\n/* line 130, ../compass-src/sass/screen.scss */\n.output .reg-text {\n  height: 10rem;\n}\n/* line 134, ../compass-src/sass/screen.scss */\n.output .download {\n  margin-top: 2rem;\n}\n/* line 137, ../compass-src/sass/screen.scss */\n.output .download a {\n  font-size: 150%;\n  padding: 0.5em 1em;\n  -moz-border-radius: 5rem;\n  -webkit-border-radius: 5rem;\n  border-radius: 5rem;\n  background: #339;\n  color: #fff;\n  text-decoration: none;\n}\n\n/* line 148, ../compass-src/sass/screen.scss */\n.selector {\n  position: fixed;\n  top: 1rem;\n  right: 1rem;\n}\n/* line 153, ../compass-src/sass/screen.scss */\n.selector a {\n  display: inline-block;\n  border: 1px solid #ddd;\n  background: #555;\n  color: #fff;\n  text-decoration: none;\n  padding: 0.4rem 1rem;\n  -moz-border-radius: 5rem;\n  -webkit-border-radius: 5rem;\n  border-radius: 5rem;\n}\n\n/* line 164, ../compass-src/sass/screen.scss */\n.show-preview .output {\n  display: none;\n}\n\n/* line 168, ../compass-src/sass/screen.scss */\n.show-registry .preview {\n  display: none;\n}\n", ""]);
+	exports.push([module.id, "/* line 5, ../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font: inherit;\n  font-size: 100%;\n  vertical-align: baseline;\n}\n\n/* line 22, ../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */\nhtml {\n  line-height: 1;\n}\n\n/* line 24, ../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */\nol, ul {\n  list-style: none;\n}\n\n/* line 26, ../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n\n/* line 28, ../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */\ncaption, th, td {\n  text-align: left;\n  font-weight: normal;\n  vertical-align: middle;\n}\n\n/* line 30, ../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */\nq, blockquote {\n  quotes: none;\n}\n/* line 103, ../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */\nq:before, q:after, blockquote:before, blockquote:after {\n  content: \"\";\n  content: none;\n}\n\n/* line 32, ../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */\na img {\n  border: none;\n}\n\n/* line 116, ../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */\narticle, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {\n  display: block;\n}\n\n/* line 3, ../compass-src/sass/_fx.scss */\n.slide-transition {\n  -moz-transform: translateX(0);\n  -ms-transform: translateX(0);\n  -webkit-transform: translateX(0);\n  transform: translateX(0);\n  -moz-transition: -moz-transform 0.5s;\n  -o-transition: -o-transform 0.5s;\n  -webkit-transition: -webkit-transform 0.5s;\n  transition: transform 0.5s;\n}\n\n/* line 8, ../compass-src/sass/_fx.scss */\n.slide-enter {\n  -moz-transform: translateX(100vw);\n  -ms-transform: translateX(100vw);\n  -webkit-transform: translateX(100vw);\n  transform: translateX(100vw);\n}\n\n/* line 12, ../compass-src/sass/_fx.scss */\n.slide-leave {\n  -moz-transform: translateX(100vw);\n  -ms-transform: translateX(100vw);\n  -webkit-transform: translateX(100vw);\n  transform: translateX(100vw);\n}\n\n/* line 5, ../compass-src/sass/screen.scss */\n* {\n  -moz-box-sizing: border-box;\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box;\n}\n\n/* line 9, ../compass-src/sass/screen.scss */\nbody {\n  background: #eee;\n  color: #555;\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  line-height: 140%;\n  overflow-x: hidden;\n}\n\n/* line 18, ../compass-src/sass/screen.scss */\nh1 {\n  font-size: 120%;\n  color: #777;\n  padding: 1rem;\n  padding-left: 4rem;\n}\n\n/* line 25, ../compass-src/sass/screen.scss */\n.color-scheme {\n  position: fixed;\n  top: 0;\n  left: -11.4rem;\n  width: 14rem;\n  height: 100vh;\n  overflow-y: scroll;\n  margin-right: 1rem;\n  background: #555;\n  color: #eee;\n  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);\n  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);\n  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);\n  -moz-transition: translateX, 0.3s;\n  -o-transition: translateX, 0.3s;\n  -webkit-transition: translateX, 0.3s;\n  transition: translateX, 0.3s;\n  z-index: 10;\n}\n/* line 39, ../compass-src/sass/screen.scss */\n.color-scheme:hover {\n  -moz-transform: translateX(11.4rem);\n  -ms-transform: translateX(11.4rem);\n  -webkit-transform: translateX(11.4rem);\n  transform: translateX(11.4rem);\n}\n\n/* line 44, ../compass-src/sass/screen.scss */\n.color {\n  padding: 0.2rem 0.2rem 0.2rem 0;\n  white-space: nowrap;\n  text-align: right;\n  line-height: 1.2rem;\n  position: relative;\n  overflow: hidden;\n}\n/* line 54, ../compass-src/sass/screen.scss */\n.color label {\n  font-size: 80%;\n  font-weight: bold;\n  width: 10rem;\n  display: inline-block;\n  vertical-align: middle;\n}\n/* line 63, ../compass-src/sass/screen.scss */\n.color input {\n  position: absolute;\n  top: 0;\n  left: 0;\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n/* line 72, ../compass-src/sass/screen.scss */\n.color .swatch {\n  display: inline-block;\n  width: 1.2rem;\n  height: 1.2rem;\n  padding: 0;\n  vertical-align: middle;\n  cursor: pointer;\n  -moz-border-radius: 0.6rem;\n  -webkit-border-radius: 0.6rem;\n  border-radius: 0.6rem;\n  -moz-transition: background-color 0.3s;\n  -o-transition: background-color 0.3s;\n  -webkit-transition: background-color 0.3s;\n  transition: background-color 0.3s;\n}\n\n/* line 84, ../compass-src/sass/screen.scss */\n.preview,\n.output {\n  padding: 1rem;\n  padding-left: 4rem;\n}\n\n/* line 90, ../compass-src/sass/screen.scss */\n.preview {\n  font-family: 'Consolas', 'Lucida Console', monospace;\n  font-size: 120%;\n  line-height: 110%;\n  height: 100vh;\n  -moz-transition: background-color 0.3s, color 0.3s;\n  -o-transition: background-color 0.3s, color 0.3s;\n  -webkit-transition: background-color 0.3s, color 0.3s;\n  transition: background-color 0.3s, color 0.3s;\n}\n/* line 97, ../compass-src/sass/screen.scss */\n.preview .color-bars {\n  white-space: nowrap;\n}\n/* line 101, ../compass-src/sass/screen.scss */\n.preview .color-cell {\n  -moz-transition: background-color 0.3s, color 0.3s;\n  -o-transition: background-color 0.3s, color 0.3s;\n  -webkit-transition: background-color 0.3s, color 0.3s;\n  transition: background-color 0.3s, color 0.3s;\n}\n/* line 105, ../compass-src/sass/screen.scss */\n.preview .cursor {\n  display: inline-block;\n}\n/* line 109, ../compass-src/sass/screen.scss */\n.preview a {\n  color: inherit;\n  text-decoration: none;\n}\n/* line 113, ../compass-src/sass/screen.scss */\n.preview a:hover {\n  text-decoration: underline;\n}\n\n/* line 119, ../compass-src/sass/screen.scss */\n.output {\n  position: absolute;\n  top: 0;\n  right: 0;\n  min-height: 100vh;\n  max-width: 100rem;\n  background-color: #eee;\n  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);\n  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);\n  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);\n}\n/* line 128, ../compass-src/sass/screen.scss */\n.output h2 {\n  font-size: 150%;\n  line-height: 110%;\n  margin: 2rem 0 1rem;\n}\n/* line 134, ../compass-src/sass/screen.scss */\n.output .instructions {\n  color: #777;\n  font-size: 90%;\n  margin: 0.3rem 0 1rem;\n}\n/* line 140, ../compass-src/sass/screen.scss */\n.output input,\n.output textarea {\n  width: 100%;\n  padding: 0.3rem 0.5rem;\n  font-family: monospace;\n  border: 1px solid #ddd;\n  background: #fff;\n}\n/* line 149, ../compass-src/sass/screen.scss */\n.output .reg-text {\n  height: 10rem;\n}\n/* line 153, ../compass-src/sass/screen.scss */\n.output .download {\n  margin-top: 2rem;\n}\n/* line 156, ../compass-src/sass/screen.scss */\n.output .download a {\n  font-size: 150%;\n  padding: 0.5em 1em;\n  -moz-border-radius: 5rem;\n  -webkit-border-radius: 5rem;\n  border-radius: 5rem;\n  background: #339;\n  color: #fff;\n  text-decoration: none;\n}\n\n/* line 167, ../compass-src/sass/screen.scss */\n.selector {\n  position: fixed;\n  top: 1rem;\n  right: 1rem;\n  z-index: 10;\n}\n/* line 173, ../compass-src/sass/screen.scss */\n.selector a {\n  display: inline-block;\n  border: 1px solid #ddd;\n  background: #555;\n  color: #fff;\n  text-decoration: none;\n  padding: 0.4rem 1rem;\n  -moz-border-radius: 5rem;\n  -webkit-border-radius: 5rem;\n  border-radius: 5rem;\n}\n", ""]);
 
 	// exports
 
@@ -18873,6 +18820,99 @@
 /* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _jquery = __webpack_require__(302);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	var _vue = __webpack_require__(307);
+
+	var _vue2 = _interopRequireDefault(_vue);
+
+	var _ui = __webpack_require__(308);
+
+	var _ui2 = _interopRequireDefault(_ui);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var VERSION = '0.0.3';
+
+	var App = _vue2.default.extend({
+	  template: _ui2.default,
+
+	  // Hooks
+
+	  created: function created() {
+	    // Values bound here are not reactive at all.
+	    this.version = VERSION;
+	  },
+
+	  // Data
+
+	  computed: {
+	    ansiColors: function ansiColors() {
+	      return this.colors.slice(6);
+	    },
+	    presetsArray: function presetsArray() {
+	      return this.presets.split(',').map(function (preset) {
+	        return preset.trim();
+	      });
+	    },
+	    registryText: function registryText() {
+	      var regText = 'Windows Registry Editor Version 5.00\n\n';
+	      var that = this;
+	      return regText + this.presetsArray.map(function (preset) {
+	        var regSection;
+
+	        if (preset === '') return null;
+
+	        // In the line below, note that we are not exactly doing URL quoting.
+	        // We only want to encode the space character.
+	        regSection = '[HKEY_CURRENT_USER\\Software\\SimonTatham\\PuTTY\\Sessions\\' + preset.replace(/ /g, '%20') + ']\n';
+	        return regSection + that.colors.map(function (color, index) {
+	          return '"Colour' + index + '"="' + color.registryValue + '"';
+	        }).join('\n');
+	      }).join('\n\n');
+	    },
+	    registryHref: function registryHref() {
+	      return 'data:text/plain;charset=utf-8,' + encodeURIComponent(this.registryText);
+	    },
+	    colorArray: function colorArray() {
+	      return this.colors.map(function (c) {
+	        return c.value;
+	      });
+	    },
+	    previewShown: function previewShown() {
+	      return this.activeView === 'preview';
+	    },
+	    registryShown: function registryShown() {
+	      return this.activeView === 'registry';
+	    }
+	  },
+
+	  // Behavior
+
+	  methods: {
+	    showPreview: function showPreview() {
+	      this.activeView = 'preview';
+	    },
+	    showRegistry: function showRegistry() {
+	      this.activeView = 'registry';
+	    }
+	  }
+	});
+
+	exports.default = App;
+
+/***/ },
+/* 307 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/* WEBPACK VAR INJECTION */(function(global, process) {/*!
 	 * Vue.js v1.0.26
 	 * (c) 2016 Evan You
@@ -28950,7 +28990,13 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(294)))
 
 /***/ },
-/* 307 */
+/* 308 */
+/***/ function(module, exports) {
+
+	module.exports = "<style>\n.cursor {\n    background-color: {{ colors[5].value }};\n    color: {{ colors[4].value }};\n}\n.bold {\n    color: {{ colors[1].value }};\n}\n</style>\n\n<nav class=\"selector\">\n    <a v-if=\"previewShown\" v-on:click=\"showRegistry\" href=\"javascript:void(0)\">Registry File</a>\n    <a v-if=\"registryShown\" v-on:click=\"showPreview\" href=\"javascript:void(0)\">Close</a>\n</nav>\n\n<div class=\"color-scheme\">\n    <p class=\"color\" v-for=\"color in colors\">\n    <label for=\"{{ color.id }}\">{{ color.name }}:</label>\n    <span class=\"swatch\" :style=\"{ background: color.value }\" data-target=\"#{{ color.id }}\"></span>\n    <input id=\"{{ color.id }}\" v-model=\"color.value\" placeholder=\"color\" type=\"color\">\n    </p>\n</div>\n\n<section class=\"preview\" :style=\"{ background: colors[2].value, color: colors[0].value }\">\n    <p>\n        [user@universe ~] color-demo\n    </p>\n    <br>\n    <p class=\"bold\">PuTTY Colorizer v{{ version }}</p>\n    <p>&copy;2016 Hajime Yamasaki Vukelic.</p>\n    <p>Some rights reserved.</p>\n    <br>\n    <p class=\"color-bars\" v-for=\"fg in ansiColors\">\n        <span class=\"color-cell\" :style=\"{ color: fg.value }\">gYw</span>\n        <span class=\"color-cell\" v-for=\"bg in ansiColors\" :style=\"{ background: bg.value, color: fg.value }\">\n            gYw\n        </span>\n    </p>\n    <br>\n    <p>[user@universe ~] whereis source</p>\n    <p><a href=\"https://github.com/foxbunny/putty-colorizer\">https://github.com/foxbunny/putty-colorizer</a></p>\n    <p>[user@universe ~] echo $LICENSE</p>\n    <p>MIT</p>\n    <p class=\"final-prompt\">\n        [user@universe ~] exi<span id=\"cursor\" class=\"cursor\">t</span>\n    </p>\n</section>\n\n<section v-show=\"registryShown\" class=\"output\" transition=\"slide\">\n    <h2>Your saved PuTTY sessions</h2>\n    <p class=\"presets\">\n        <input v-model=\"presets\" placeholder=\"comma-separated list of presets\">\n    </p>\n    <p class=\"instructions\">\n        A comma-separated list of saved session names can be supplied.\n        Registry entries will be generated for all listed sessions.\n    </p>\n\n    <h2>Output</h2>\n    <textarea class=\"reg-text\">{{ registryText }}</textarea>\n    <p class=\"instructions\">\n        Copy this text into a file, save it as 'putty.reg', and\n        double-click to install, or use the button below.\n    </p>\n    <p class=\"download\">\n        <a href=\"{{ registryHref }}\" download=\"putty.reg\">Download putty.reg</a>\n    </p>\n</section>\n";
+
+/***/ },
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28964,7 +29010,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _rgbaConvert = __webpack_require__(308);
+	var _rgbaConvert = __webpack_require__(310);
 
 	var _rgbaConvert2 = _interopRequireDefault(_rgbaConvert);
 
@@ -29035,7 +29081,7 @@
 	exports.default = ColorData;
 
 /***/ },
-/* 308 */
+/* 310 */
 /***/ function(module, exports) {
 
 	
@@ -29263,12 +29309,6 @@
 	  }
 	}
 
-
-/***/ },
-/* 309 */
-/***/ function(module, exports) {
-
-	module.exports = "<style>\n.cursor {\n    background-color: {{ colors[5].value }};\n    color: {{ colors[4].value }};\n}\n.bold {\n    color: {{ colors[1].value }};\n}\n</style>\n\n<nav class=\"selector\">\n    <a v-if=\"activeView === 'preview'\" v-on:click=\"showRegistry\" href=\"javascript:void(0)\">Registry File</a>\n    <a v-if=\"activeView === 'registry'\" v-on:click=\"showPreview\" href=\"javascript:void(0)\">Preview</a>\n</nav>\n\n<div class=\"color-scheme\">\n    <p class=\"color\" v-for=\"color in colors\">\n    <label for=\"{{ color.id }}\">{{ color.name }}:</label>\n    <span class=\"swatch\" :style=\"{ background: color.value }\" data-target=\"#{{ color.id }}\"></span>\n    <input id=\"{{ color.id }}\" v-model=\"color.value\" placeholder=\"color\" type=\"color\">\n    </p>\n</div>\n\n<div class=\"show-{{ activeView }}\">\n    <div class=\"preview\" :style=\"{ background: colors[2].value, color: colors[0].value }\">\n        <p>\n            [user@universe ~] color-demo\n        </p>\n        <br>\n        <p class=\"bold\">PuTTY Colorizer v{{ version }}</p>\n        <p>&copy;2016 Hajime Yamasaki Vukelic.</p>\n        <p>Some rights reserved.</p>\n        <br>\n        <p class=\"color-bars\" v-for=\"fg in ansiColors\">\n            <span class=\"color-cell\" :style=\"{ color: fg.value }\">gYw</span>\n            <span class=\"color-cell\" v-for=\"bg in ansiColors\" :style=\"{ background: bg.value, color: fg.value }\">\n                gYw\n            </span>\n        </p>\n        <br>\n        <p>[user@universe ~] whereis source</p>\n        <p><a href=\"https://github.com/foxbunny/putty-colorizer\">https://github.com/foxbunny/putty-colorizer</a></p>\n        <p>[user@universe ~] echo $LICENSE</p>\n        <p>MIT</p>\n        <p class=\"final-prompt\">\n            [user@universe ~] exi<span id=\"cursor\" class=\"cursor\">t</span>\n        </p>\n    </div>\n\n    <div class=\"output\">\n        <h2>Your saved PuTTY sessions</h2>\n        <p class=\"presets\">\n            <input v-model=\"presets\" placeholder=\"comma-separated list of presets\">\n        </p>\n        <p class=\"instructions\">\n            A comma-separated list of saved session names can be supplied.\n            Registry entries will be generated for all listed sessions.\n        </p>\n\n        <h2>Output</h2>\n        <textarea class=\"reg-text\">{{ registryText }}</textarea>\n        <p class=\"instructions\">\n            Copy this text into a file, save it as 'putty.reg', and\n            double-click to install, or use the button below.\n        </p>\n        <p class=\"download\">\n            <a href=\"{{ registryHref }}\" download=\"putty.reg\">Download putty.reg</a>\n        </p>\n    </div>\n</div>\n";
 
 /***/ }
 /******/ ]);
