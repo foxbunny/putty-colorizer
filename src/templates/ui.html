@@ -5,4 +5,4 @@
 
 <app-colorscheme :colors="colors"></app-colorscheme>
 <app-preview :colors="colors" :version="version" v-on:click="hideRegistry"></app-preview>
-<app-registry :colors="colors" :presets="presets" v-show="registryActive" :v-on:keyup.27="hideRegistry" transition="slide"></app-registry>
+<app-registry :colors="colors" :presets="presets" v-show="registryActive" v-on:keyup.27="hideRegistry" transition="slide"></app-registry>

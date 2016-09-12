@@ -1,14 +1,14 @@
-<style>
-.cursor {
-    background-color: {{ colors[5].value }};
-    color: {{ colors[4].value }};
-}
-.bold {
-    color: {{ colors[1].value }};
-}
-</style>
-
 <section class="preview" :style="{ background: background.value, color: foreground.value }">
+    <style>
+        .cursor {
+            background-color: {{ colors[5].value }};
+            color: {{ colors[4].value }};
+        }
+        .bold {
+            color: {{ colors[1].value }};
+        }
+    </style>
+
     <p>
         [user@universe ~] color-demo
     </p>
