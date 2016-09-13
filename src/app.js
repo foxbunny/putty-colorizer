@@ -7,7 +7,7 @@ import ColorScheme from './colorscheme';
 import Preview from './preview';
 import Registry from './registry';
 
-const VERSION = '1.1.0';
+const VERSION = '1.2.0-dev';
 
 var App = Vue.extend({
     template: ui,
