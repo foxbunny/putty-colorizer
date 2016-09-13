@@ -6,6 +6,8 @@
   "scripts": {
     "build": "webpack --conf webpack.config.js",
     "start": "webpack-dev-server --inline --hot --conf webpack.config.js",
+    "compass": "compass watch --conf conf/compass.rb",
+    "compass-build": "compass compile --conf conf/compass.rb --force",
     "test": "karma start"
   },
   "devDependencies": {
