@@ -3,39 +3,30 @@
 .color-scheme {
   position: fixed;
   top: 0;
-  left: -11.4rem;
-  width: 14rem;
+  left: 0;
+  width: 3rem;
   height: 100vh;
   overflow-y: scroll;
-  margin-right: 1rem;
+  overflow-x: hidden;
   background: #555;
   color: #eee;
   @include box-shadow(0 0 5px transparentize(black, 0.5));
-  @include transition(translateX, 0.3s);
+  @include transition(width, 0.3s);
   z-index: 10;
 
   &:hover {
-    @include translateX(11.4rem);
+    width: 14rem;
   }
 }
 
 .color {
-  padding: 0.2rem 0.2rem 0.2rem 0;
+  padding: 0.2rem 0.4rem;
   white-space: nowrap;
-  text-align: right;
   line-height: 1.2rem;
 
   // Following two lines are used to tuck the invisible input away
   position: relative;
   overflow: hidden;
-
-  label {
-    font-size: 80%;
-    font-weight: bold;
-    width: 10rem;
-    display: inline-block;
-    vertical-align: middle;
-  }
 
   // Invisible input
   input {
@@ -54,7 +45,18 @@
     padding: 0;
     vertical-align: middle;
     cursor: pointer;
+    margin-right: 0.5rem;
     @include border-radius(0.6rem);
     @include transition(background-color 0.3s);
   }
+
+  label {
+    font-size: 80%;
+    font-weight: bold;
+    width: 10rem;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
 }
