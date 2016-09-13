@@ -1,0 +1,6 @@
+1.0.1: Bugfix release
+    - Fixes Esc keybinding not closing the registry sidebar
+    - Fixes clicking on preview not closing the registry sidebar
+
+1.0.0: Initial release
+    - First fully functional version
