@@ -15,7 +15,11 @@ var ColorField = Vue.extend({
     // element is clicked, it activates the actual input by using the activate
     // method and passing it the input's id.
     activate: function (id) {
+      // In Microsoft Edge, the click event alone will not cause the color
+      // field to activate. On other browsers, focusing the field does not
+      // activate. We therefore call both.
       this.input.click();
+      this.input.focus();
     }
   }
 });
