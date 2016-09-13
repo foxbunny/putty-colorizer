@@ -1,3 +1,13 @@
+1.1.0: Maintenance release
+    - Add CHANGELOG
+    - Handle Esc key globally to dismiss the registry sidebar
+    - Fixes event handling in Microsoft Edge, clicking swatches now works
+    - Fixes retracting color scheme sidebar closing color picker on Edge
+    - The build target now generates minified code (1.5MB -> 130KB)
+    - Moved all configuration files to conf subdirectory
+    - Modularized SCSS code
+    - Add compass and compass-build NPM scripts
+
 1.0.1: Bugfix release
     - Fixes Esc keybinding not closing the registry sidebar
     - Fixes clicking on preview not closing the registry sidebar
