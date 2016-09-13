@@ -12,6 +12,14 @@ const VERSION = '2.0.0-dev';
 var App = Vue.extend({
     template: ui,
 
+    // Hooks
+    ready: function () {
+      document.onkeyup = event => {
+        if (27 !== (event.which || event.keyCode)) return;
+        this.registryActive = false; 
+      };
+    },
+
     // Data
 
     data: () => {
