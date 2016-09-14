@@ -1,17 +1,26 @@
-import Vue from 'vue';
-import localStorage from 'local-storage';
+<template>
+  <nav class="selector">
+    <a v-if="registryActive" v-on:click="hideRegistry" href="javascript:void(0)">Close</a>
+    <a v-else v-on:click="showRegistry" href="javascript:void(0)">Registry File</a>
+  </nav>
 
-import ui from './templates/ui.html';
-import ColorData, { DEFAULT_COLORS } from './color-data';
-import ColorScheme from './colorscheme';
-import Preview from './preview';
-import Registry from './registry';
+  <app-colorscheme :colors="colors"></app-colorscheme>
+  <app-preview :colors="colors" :version="version" v-on:click="hideRegistry"></app-preview>
+  <app-registry :colors="colors" :presets="presets" v-show="registryActive" transition="slide"></app-registry>
+</template>
 
-const VERSION = '1.2.0-dev';
+<script>
+  import localStorage from 'local-storage';
 
-var App = Vue.extend({
-    template: ui,
+  import ColorData, { DEFAULT_COLORS } from './color-data';
+  
+  import ColorScheme from './colorscheme.vue';
+  import Preview from './preview.vue';
+  import Registry from './registry.vue';
 
+  const VERSION = '1.2.0-dev';
+
+  export default {
     // Hooks
     ready: function () {
       document.onkeyup = event => {
@@ -66,7 +75,7 @@ var App = Vue.extend({
     },
 
     watch: {
-      colorArray: function (colors) {
+      colorArray: function (colors, previousColors) {
         localStorage('colors', colors);
       },
 
@@ -74,6 +83,24 @@ var App = Vue.extend({
         localStorage('presets', presets);
       }
     }
-});
+  };
+</script>
 
-export default App;
+<style lang="sass">
+  .selector {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+
+    a {
+      display: inline-block;
+      border: 1px solid #ddd;
+      background: #555;
+      color: #fff;
+      text-decoration: none;
+      padding: 0.4rem 1rem;
+      border-radius: 5rem;
+    }
+  }
+</style>

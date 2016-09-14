@@ -22,12 +22,8 @@ module.exports = {
           presets: ['es2015']
         }
       },
-      {
-        test: /\.html$/,
-        exclude: /(node_modules|bin)/,
-        loader: 'html-loader'
-      },
-      { test: /\.css$/, loader: 'style-loader!css-loader' },
+      { test: /\.vue$/, loader: 'vue' },
+      { test: /\.scss$/, loader: 'style!css!autoprefixer!sass' },
       { test: /\.png$/, loader: 'file-loader' },
       { test: /\.jpg$/, loader: 'file-loader' }
     ]

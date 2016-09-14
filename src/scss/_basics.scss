@@ -1,7 +1,5 @@
-@import "compass/css3";
-
 * {
-  @include box-sizing(border-box);
+  box-sizing: border-box;
 }
 
 body {

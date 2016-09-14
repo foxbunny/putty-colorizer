@@ -1,6 +1,14 @@
 import 'babel-polyfill';
-import './screen.css';
+import './scss/screen.scss';
 
-import App from './app';
+import Vue from 'vue';
 
-global.onload = () => { new App({el: '#main'}); };
+import App from './app.vue';
+
+new Vue({
+	el: '#main',
+	template: '<app-main/>',
+	components: {
+		'app-main': App
+	}
+});
