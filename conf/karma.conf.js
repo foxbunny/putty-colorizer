@@ -5,7 +5,7 @@ webpackConfig.devtool = 'inline-source-map';
 module.exports = function(config) {
   config.set({
     // Source files
-    basePath: '',
+    basePath: '../',
     files: [
       {pattern: 'test/*-spec.js', watch: false}
     ],
